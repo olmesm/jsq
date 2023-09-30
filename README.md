@@ -25,6 +25,12 @@ npm run poc
 
 # Custom Blobs
 echo '{"some-json": "blob"}' | npm start
+
+# Build
+npm run build
+
+# Check bundle size
+ls -lh ./dist
 ```
 
 ## Notes
