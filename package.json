@@ -1,0 +1,15 @@
+{
+  "name": "jsq",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "poc": "curl -s https://restcountries.com/v3.1/all | npm start"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
