@@ -10,9 +10,14 @@
     "poc": "curl -s https://restcountries.com/v3.1/all | npm start"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.199",
     "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "rambdax": "^10.0.0"
   }
 }

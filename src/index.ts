@@ -1,9 +1,10 @@
+import { main } from "./main.js";
+
 import fs from "fs";
 
-const data = fs.readFileSync(0, "utf-8");
+const stdinJson = fs.readFileSync(0, "utf-8");
+const input = [process.argv[2]];
 
-const main = async () => {
-  console.log(JSON.parse(data));
-};
+const result = main(input, stdinJson);
 
-main();
+console.log(result);
