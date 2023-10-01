@@ -136,16 +136,28 @@ for file in $INPUT_ARGS; do
     tmp=$(mktemp)
 
     # Upload the artifact - capturing HTTP response-code in our output file.
+    # response=$(curl \
+    #     -sSL \
+    #     -XPOST \
+    #     -H "${AUTH_HEADER}" \
+    #     -d "{\"tag_name\":\"${RELEASE_ID}\",\"target_commitish\":\"main\",\"name\":\"${RELEASE_ID}\",\"body\":\"Release ${RELEASE_ID}\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}" \
+    #     --upload-file "${file}" \
+    #     --header "Content-Type:application/octet-stream" \
+    #     --write-out "%{http_code}" \
+    #     --output $tmp \
+    #     "${UPLOAD_URL}")
     response=$(curl \
         -sSL \
-        -XPOST \
+        -X POST \
+        -H "Accept: application/vnd.github+json" \
         -H "${AUTH_HEADER}" \
-        -d "{\"tag_name\":\"${RELEASE_ID}\",\"target_commitish\":\"main\",\"name\":\"${RELEASE_ID}\",\"body\":\"Release ${RELEASE_ID}\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}" \
-        --upload-file "${file}" \
-        --header "Content-Type:application/octet-stream" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        -H "Content-Type: application/octet-stream" \
         --write-out "%{http_code}" \
         --output $tmp \
-        "${UPLOAD_URL}")
+        "${UPLOAD_URL}" \
+        --data-binary "@${file}"
+    )
 
     # If the curl-command returned a non-zero response we must abort
     if [ "$?" -ne 0 ]; then
