@@ -6,10 +6,10 @@ on:
 name: Handle Release
 jobs:
   generate:
-    name: Create release-artifacts
-    runs-on: ubuntu-latest
     permissions:
       contents: write
+    name: Create release-artifacts
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
@@ -18,8 +18,8 @@ jobs:
         with:
           bun-version: latest
       - run: ./.github/build
-      - name: Set env
-        run: echo "RELEASE_VERSION=v$(npm pkg get version | tr -d '"')" >> $GITHUB_ENV
+      # - name: Set env
+      #   run: echo "RELEASE_VERSION=v$(npm pkg get version | tr -d '"')" >> $GITHUB_ENV
       - name: Upload the artifacts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
