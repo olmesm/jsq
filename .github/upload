@@ -147,7 +147,7 @@ for file in $INPUT_ARGS; do
     #     --output $tmp \
     #     "${UPLOAD_URL}")
     response=$(curl \
-        -sSL \
+        -L \
         -X POST \
         -H "Accept: application/vnd.github+json" \
         -H "${AUTH_HEADER}" \
@@ -156,7 +156,7 @@ for file in $INPUT_ARGS; do
         --write-out "%{http_code}" \
         --output $tmp \
         "${UPLOAD_URL}" \
-        --data-binary "${file}"
+        --data-binary "@${file}"
     )
 
     # If the curl-command returned a non-zero response we must abort
