@@ -8,11 +8,11 @@ The purpose is to make a more intuitive JQ, although this may come at the expens
 
 ## Goals
 
-- binary executable/easy install
 - easy syntax
+- binary executable
 - startup speed
-- bundle size - we'll never beat jq here, but <100mb would work.
-- aim to allow for succinct scripting
+- bundle size - we'll never beat jq here, <75mb should be fine.
+- succinct expressions
 
 ## Usage
 
@@ -95,10 +95,12 @@ $ echo '{"some-json": "blob"}' | jsq '(input) => {
 curl -sL https://raw.githubusercontent.com/olmesm/odd-scripts/main/shell/asdf-install.sh | bash
 
 # For countries API
-npm run poc
+npm run poc -- '<function expression>'
+# npm run poc -- 'r.map(r.path("name.common"))'
 
 # Custom Blobs
-echo '{"some-json": "blob"}' | npm start
+echo '{"some-json": "blob"}' | npm start -- '<function expression>'
+# echo '{"some-json": "blob"}' | npm start -- 'r.path("some-json")'
 
 # Build
 npm run build

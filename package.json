@@ -3,7 +3,7 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "build": "bun build ./src/index.ts --compile --outfile ./dist/jsq",
+    "build": "bun build ./src/index.ts --compile --minify --outfile ./dist/jsq",
     "start": "bun run src/index.ts",
     "clean": "rm -rf dist",
     "nuke": "npm run clean && rm -rf node_modules",
