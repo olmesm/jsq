@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 RELEASE_NOTES="$1"
-VERSION="$(npm pkg get version)"
+VERSION=$(npm pkg get version)
 
 if [[ $(git status --porcelain) ]]; then
   echo "[ERROR] Please ensure the branch is clean and pushed to main"
