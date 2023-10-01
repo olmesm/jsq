@@ -1,10 +1,11 @@
 # JSQ - JQ Javascript
 
-> WIP. I'm exploring this as a concept right now. See [goals](#goals)
+> WIP. I'm exploring this as a concept right now. See [goals](#goals) for more details.
+> Next up: CICD for binary releases and tests.
 
 JQ is a brilliant tool but having to lookup the syntax everytime I use it is pretty cumbersome. Javascript is pretty flexible, well known, and allows for a functional flavour.
 
-The purpose is to make a more intuitive JQ, although this may come at the expense of succinctness.
+The purpose is to make a more intuitive and maintainable JQ, sacrificing binary size and potentially succinctness.
 
 ## Goals
 
