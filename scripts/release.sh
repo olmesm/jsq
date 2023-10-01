@@ -3,8 +3,8 @@
 RELEASE_NOTES="$1"
 VERSION="$(npm pkg get version)"
 
-if [[ ! $(git status --porcelain) ]]; then
-  echo "[ERROR] Nothing to commit."
+if [[ $(git status --porcelain) ]]; then
+  echo "[ERROR] Please ensure the branch is clean and pushed to main"
   exit 1
 fi
 
@@ -15,11 +15,6 @@ fi
 
 if [[ ! "${RELEASE_NOTES}" ]]; then
   echo "[ERROR] Please enter a RELEASE_NOTES in the form of a \"string\""
-  exit 1
-fi
-
-if [[ $(git status --porcelain | wc -l | tr -d ' ') > 0 ]]; then
-  echo "[ERROR] Please ensure the branch is clean and pushed to master"
   exit 1
 fi
 
