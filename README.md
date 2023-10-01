@@ -79,10 +79,10 @@ $ echo '{"some-json": "blob"}' | jsq '(input) => {
 Not recommended, but mixing and matching libraries is also possible
 
 ```bash
-curl -s https://restcountries.com/v3.1/all | jsq 'r.map(r.path("name.common"))'
+cat _test/country-data.json | jsq 'r.map(r.path("name.common"))'
 [ "French Polynesia", "Saint Martin", "Venezuela", "Réunion", ... ]
 
-curl -s https://restcountries.com/v3.1/all | jsq '[o => _.map(o, f.get("name.common")), f.map(r.head)]'
+cat _test/country-data.json | jsq '[o => _.map(o, f.get("name.common")), f.map(r.head)]'
 [
   "F", # from "French Polynesia"
   "S", # from "Saint Martin"
@@ -117,7 +117,13 @@ ls -lh ./dist
 
 - [Git diffing bun lockfiles](https://bun.sh/docs/install/lockfile)
 
-  ```
+  ```bash
   git config diff.lockb.textconv bun
   git config diff.lockb.binary true
+  ```
+
+- Refresh country data
+
+  ```bash
+  curl -s https://restcountries.com/v3.1/all  > _test/country-data.json
   ```
