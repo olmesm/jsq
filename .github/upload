@@ -140,6 +140,7 @@ for file in $INPUT_ARGS; do
         -sSL \
         -XPOST \
         -H "${AUTH_HEADER}" \
+        -d "{\"tag_name\":\"${RELEASE_ID}\",\"target_commitish\":\"main\",\"name\":\"${RELEASE_ID}\",\"body\":\"Release ${RELEASE_ID}\",\"draft\":false,\"prerelease\":false,\"generate_release_notes\":false}"
         --upload-file "${file}" \
         --header "Content-Type:application/octet-stream" \
         --write-out "%{http_code}" \
