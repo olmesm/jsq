@@ -45,19 +45,6 @@ blob
 # Shorthand
 $ echo '{"some-json": "blob"}' | jsq 'r.path("some-json")'
 blob
-
-## ...or any combination
-curl -s https://restcountries.com/v3.1/all | jsq 'r.map(r.path("name.common"))'
-[ "French Polynesia", "Saint Martin", "Venezuela", "Réunion", ... ]
-
-curl -s https://restcountries.com/v3.1/all | jsq '[o => _.map(o, f.get("name.common")), f.map(r.head)]'
-[
-  "F", # from "French Polynesia"
-  "S", # from "Saint Martin"
-  "V", # from "Venezuela"
-  "R", # from "Réunion"
-  ...
-]
 ```
 
 An array of functions will apply the result of the previous function and original object to each function.
@@ -86,6 +73,22 @@ $ echo '{"some-json": "blob"}' | jsq '(input) => {
   {
     "some-json": "blob"
   }
+]
+```
+
+Not recommended, but mixing and matching libraries is also possible
+
+```bash
+curl -s https://restcountries.com/v3.1/all | jsq 'r.map(r.path("name.common"))'
+[ "French Polynesia", "Saint Martin", "Venezuela", "Réunion", ... ]
+
+curl -s https://restcountries.com/v3.1/all | jsq '[o => _.map(o, f.get("name.common")), f.map(r.head)]'
+[
+  "F", # from "French Polynesia"
+  "S", # from "Saint Martin"
+  "V", # from "Venezuela"
+  "R", # from "Réunion"
+  ...
 ]
 ```
 
