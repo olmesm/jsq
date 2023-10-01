@@ -18,6 +18,11 @@ if [[ ! "${RELEASE_NOTES}" ]]; then
   exit 1
 fi
 
+if [[ $(git status --porcelain | wc -l | tr -d ' ') > 0 ]]; then
+  echo "[ERROR] Please ensure the branch is clean and pushed to master"
+  exit 1
+fi
+
 git tag -a -m "$RELEASE_NOTES" "v$VERSION"
 
 git push --follow-tags
