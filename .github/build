@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+echo "[info] install dependencies"
+bun install
+
+echo "[info] test"
+bun run test:ci
+
+echo "[info] build artifacts"
+bun run build

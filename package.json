@@ -3,11 +3,12 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
+    "format": "xo",
     "build": "bun build ./src/index.ts --compile --minify --outfile ./dist/jsq",
     "start": "bun run src/index.ts",
     "clean": "rm -rf dist",
     "test": "npm run test:no-watch -- --watch",
-    "test:no-watch": "bun test",
+    "test:ci": "npm run format && bun test",
     "nuke": "npm run clean && rm -rf node_modules",
     "poc": "cat _test/country-data.json | npm start"
   },
