@@ -1,6 +1,6 @@
 import * as r from "rambdax";
 import _ from "lodash";
-import f from "lodash";
+import f from "lodash/fp";
 
 const isDebug = process.env.DEBUG;
 
