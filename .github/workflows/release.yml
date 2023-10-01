@@ -20,13 +20,6 @@ jobs:
       - run: ./.github/build
       - name: Set env
         run: echo "RELEASE_VERSION=v$(npm pkg get version | tr -d '"')" >> $GITHUB_ENV
-      # - name: Upload the artifacts
-      #   uses: skx/github-action-publish-binaries@master
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     releaseId: ${{ env.RELEASE_VERSION }}
-      #     args: ./dist/jsq
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
