@@ -2,6 +2,7 @@
   "editor.formatOnSave": true,
   "xo.enable": true,
   "xo.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "samverschueren.linter-xo"
   },

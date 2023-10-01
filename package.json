@@ -13,8 +13,9 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.199",
-    "bun-types": "latest",
     "@types/node": "^20.8.0",
+    "bun-types": "latest",
+    "prettier": "^3.0.3",
     "xo": "^0.56.0"
   },
   "peerDependencies": {
