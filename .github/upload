@@ -161,7 +161,7 @@ for file in $INPUT_ARGS; do
         -H "Accept: application/vnd.github+json" \
         -H "${AUTH_HEADER}" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        -H "Content-Type: application/octet-stream" \
+        -H "Content-Type: $(file -b --mime-type $file)" \
         --write-out "%{http_code}" \
         --output $tmp \
         "${UPLOAD_URL}" \
