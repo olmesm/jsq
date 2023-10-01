@@ -5,7 +5,7 @@
 
 JQ is a brilliant tool but having to lookup the syntax everytime you use it sucks. Javascript is pretty flexible, well known, and allows for a functional flavour.
 
-The purpose is to make a more intuitive and maintainable JQ, sacrificing binary size and potentially succinctness.
+JSQ aims to be a more intuitive and maintainable JQ, sacrificing binary size and potentially succinctness.
 
 ## Goals
 
